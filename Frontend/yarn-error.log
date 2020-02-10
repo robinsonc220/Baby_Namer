@@ -1,0 +1,27 @@
+Arguments: 
+  /usr/local/Cellar/node/13.1.0/bin/node /usr/local/Cellar/yarn/1.19.1/libexec/bin/yarn.js add semantic-ui-react
+
+PATH: 
+  /Users/ravenrosa/.rvm/gems/ruby-2.6.1/bin:/Users/ravenrosa/.rvm/gems/ruby-2.6.1@global/bin:/Users/ravenrosa/.rvm/rubies/ruby-2.6.1/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/usr/local:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/ravenrosa/.rvm/gems/ruby-2.6.1/bin:/Users/ravenrosa/.rvm/gems/ruby-2.6.1@global/bin:/Users/ravenrosa/.rvm/rubies/ruby-2.6.1/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/usr/local:/usr/local/sbin:/Users/ravenrosa/.rvm/bin
+
+Yarn version: 
+  1.19.1
+
+Node version: 
+  13.1.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:60:26)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
