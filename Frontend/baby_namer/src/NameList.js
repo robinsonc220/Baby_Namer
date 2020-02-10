@@ -1,10 +1,11 @@
 import React from 'react'
 import Name from './Name'
+import {Card} from 'semantic-ui-react'
 
 export default class NameList extends React.Component {
 
     renderNames = () => { return this.props.allNames.map(name => {
-        return <li className={name}><Name key={name.id} name={name}/></li>
+        return <Name key={Object.id} name={name}/>
         // console.log(name.id)
     })
 
@@ -13,9 +14,10 @@ export default class NameList extends React.Component {
     render() {
 
         return (
-            <ul>
+            <Card.Group itemsPerRow={8}>
                 {this.renderNames()}
-            </ul>
+            </Card.Group>
+        
 
         )
     }
