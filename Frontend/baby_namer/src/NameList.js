@@ -4,8 +4,8 @@ import {Card} from 'semantic-ui-react'
 
 export default class NameList extends React.Component {
 
-    renderNames = () => { return this.props.allNames.map(name => {
-        return <Name key={Object.id} name={name}/>
+    renderNames = () => { return this.props.allNames.map(nameObj => {
+        return <Name handleFavorites={this.props.handleFavorites} user={this.props.user} key={nameObj.id} name={nameObj}/>
         // console.log(name.id)
     })
 

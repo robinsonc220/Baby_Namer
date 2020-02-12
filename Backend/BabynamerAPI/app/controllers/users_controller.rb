@@ -20,7 +20,8 @@ class UsersController < ApplicationController
             # byebug
             user = User.create(user_params)
             if user.valid?
-                render json: user
+                wristband = encode_token({user_id: user.id})
+                render json: {user: UserSerializer.new(user), token: wristband}
             else
                 render json: {error: "Invalid username or password"}
             end
@@ -31,7 +32,8 @@ class UsersController < ApplicationController
             # byebug
             user = User.find_by(username: params[:username])
             if user && user.authenticate(params[:password])
-                render json: user #{user: UserSerializer.new(user)}
+                wristband = encode_token({user_id: user.id})
+                render json: {user: UserSerializer.new(user), token:wristband}
             else
                 render json: {error: "Invalid username or password"}
             end
