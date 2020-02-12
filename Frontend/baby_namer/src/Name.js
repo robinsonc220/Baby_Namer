@@ -2,6 +2,12 @@ import React from 'react'
 import { Image, Button, Modal, Icon} from 'semantic-ui-react'
 
 export default class Name extends React.Component {
+    
+    
+    handleFavClick=(e) => {
+        // console.log(e.target)
+        this.props.handleFavorites(this.props.name,this.props.user)
+    }
 
     state = { 
         open: false
@@ -17,6 +23,7 @@ export default class Name extends React.Component {
     const { open, dimmer } = this.state
 
         return (
+
             <div>
                 <Button className="babynames" color={this.props.name.gender === "MALE" ? 'blue' : 'pink'} onClick={this.show('blurring')}>
                     {this.props.name.first_name}
@@ -48,6 +55,7 @@ export default class Name extends React.Component {
                         </Modal.Actions>
                 </Modal>
             </div>
+
         )
     }
 }

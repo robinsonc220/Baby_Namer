@@ -4,9 +4,6 @@ import {Grid} from 'semantic-ui-react'
 
 export default class NameList extends React.Component {
 
-
- 
-
     render() {
 
         return (

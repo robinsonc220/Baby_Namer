@@ -43,8 +43,10 @@ export default class NameContainer extends React.Component {
 
         return (
             <div>
+
                 <Search handleOnChange={this.handleOnChange}/>
                {this.renderContent()} 
+
             </div>
         )
     }
