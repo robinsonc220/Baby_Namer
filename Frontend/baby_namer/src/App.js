@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Switch, Route, withRouter} from 'react-router';
-import {BrowserRouter as Router,Link,} from 'react-router-dom';
+import {BrowserRouter as Router, Link} from 'react-router-dom';
 import NavBar from './NavBar';
 import Form from './Form'
 // import Header from './Header';
@@ -85,14 +85,14 @@ class App extends React.Component {
   }
 
 
-  handleFavorites=(nameObj,user) => {
+  handleFavorites=(nameObj, user) => {
     // console.log(nameObj,user)
     fetch('http://localhost:3000/favorites',{
       method: "POST",
       headers: {'Content-Type':'application/json'},
       body:JSON.stringify({
-        babyname_id:nameObj.id,
-        user_id:user.id
+        babyname_id: nameObj.id,
+        user_id: user.id
       })
     })
     .then(res=>res.json())
@@ -116,7 +116,7 @@ class App extends React.Component {
           {/* <Header/> */}
             <Route path="/register" render={ this.renderForm } />
             <Route path="/login" render={ this.renderForm } />
-            <Route path="/" render={this.renderNameContainer} />
+            <Route path="/" exact render={this.renderNameContainer} />
         
         </div>
       </Router>
