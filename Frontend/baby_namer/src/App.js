@@ -48,6 +48,18 @@ class App extends React.Component {
     })
   }
 
+  handleSearchByGenderEthnicity=(gender,ethnicity,limit) => {
+    fetch(`http://localhost:3000/babynames/search_by/${gender}/${ethnicity}/${limit}`)
+    .then(res=>res.json())
+    .then(pojos=>console.log(pojos))
+  }
+
+
+  handleSearchByName=(name) => {
+    fetch(`http://localhost:3000/babynames/search/${name}`)
+    .then(res=>res.json())
+    .then(pojos=>console.log(pojos))
+  }
 
   handleRegisterSubmit = (userInfo) => {
       fetch("http://localhost:3000/users", {
@@ -75,7 +87,6 @@ class App extends React.Component {
 
   renderForm = (routerProps) => {
     if(routerProps.location.pathname === "/login"){
-      // console.log(routerProps)
       return <Form formName="Login Form" handleSubmit={this.handleLoginSubmit}/>
     } 
     else if (routerProps.location.pathname === "/register") {
