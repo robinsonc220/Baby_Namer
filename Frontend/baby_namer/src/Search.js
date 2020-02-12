@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Menu, Dropdown, Checkbox, MenuItem, Divider } from 'semantic-ui-react'
+import { Input, Menu, Dropdown, Checkbox, MenuItem } from 'semantic-ui-react'
 
 export default class Search extends React.Component{
     

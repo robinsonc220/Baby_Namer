@@ -15,7 +15,7 @@ export default class NameContainer extends React.Component {
 
     renderContent = () => {
         if (this.state.searchTerm) {
-          return <NameList allNames={this.props.allNames} handleFilter={this.handleFilter} renderNames={this.renderNames}/>
+          return <NameList allNames={this.props.allNames} handleFilter={this.handleFilter} handleFavorites={this.props.handleFavorites} user={this.props.user} renderNames={this.renderNames}/>
         } else {
           return <Instructions />;
         }
@@ -33,7 +33,7 @@ export default class NameContainer extends React.Component {
     }
 
     renderNames = () => { return this.handleFilter().map(nameObj => {
-        return <Grid.Column><Name key={nameObj.id} name={nameObj}/></Grid.Column>
+        return <Grid.Column><Name key={nameObj.id} name={nameObj} user={this.props.user} handleFavorites={this.props.handleFavorites}/></Grid.Column>
         // console.log(name.id)
         })
 
