@@ -10,7 +10,7 @@ export default class NameContainer extends React.Component {
         return (
             <div>
             <Search/>
-            <NameList allNames={this.props.allNames}/>
+            <NameList handleFavorites={this.props.handleFavorites} user={this.props.user} allNames={this.props.allNames}/>
             </div>
         )
     }

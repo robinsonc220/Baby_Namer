@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/babynames/sort_rank', to: 'babynames#sort_rank'
   get '/babynames/search/:id', to: 'babynames#search'
   
-  resources :favorites, only:[:index]
+  resources :favorites, only:[:index,:create]
 
   # resources :favorites, only:[:index]
   resources :babynames, only:[:show,:index]
