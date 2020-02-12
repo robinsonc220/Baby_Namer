@@ -8,5 +8,7 @@ class Babyname < ApplicationRecord
         where(first_name: query)
     end
         
-
+    def self.search_by(gender,ethnicity,limit)
+        where(gender:gender).where(ethnicity:ethnicity).limit(limit)
+    end
 end

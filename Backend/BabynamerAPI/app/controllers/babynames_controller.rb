@@ -22,6 +22,16 @@ class BabynamesController < ApplicationController
         render json: search_result
     end
 
+    def search_by
+        # byebug
+        gender=params[:gender].upcase
+        ethnicity=params[:ethnicity].upcase
+        limit=params[:limit].to_i
+        # Babyname.search_by(params[:gender],params[:ethnicity],params[:limit].to_i)
+        search_result=Babyname.search_by(gender,ethnicity,limit)
+        render json: search_result
+    end
+
     def sort_rank
         sort_rank=Babyname.sort_rank
         render json: sort_rank
