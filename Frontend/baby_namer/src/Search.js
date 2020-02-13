@@ -1,12 +1,9 @@
 import React from 'react'
-import { Input, Menu, Dropdown, Checkbox, MenuItem } from 'semantic-ui-react'
+import { Input, Menu, Dropdown, Checkbox, MenuItem, Segment } from 'semantic-ui-react'
 
 export default class Search extends React.Component{
     
-    state = {
-       male: false,
-       female: false
-    }
+   
 
     ethicities = [
         
@@ -32,43 +29,39 @@ export default class Search extends React.Component{
           }
     ]
 
-    handleMaleCheckbox = () =>{
 
-        this.setState({male: !this.state.male})
-    }
 
-    handleFemaleCheckbox = () =>{
-
-        this.setState({female: !this.state.female})
+    handlechange = (e) => {
+        this.props.handleSort(e.target.value)
     }
     
     render() {
 
         return (
             
-            <div>
+            <center>
+                          <Segment basic compact clearing>
+
                 <Menu secondary borderless fluid widths={4}> 
                     <MenuItem>
                         <Input size='large' icon='search' placeholder='Names that start with...' value={this.props.searchTerm} onChange={this.props.handleOnChange} /> 
                     </MenuItem>
                     <MenuItem>
-                        <Checkbox label='Male' onClick={ this.handleMaleCheckbox }/>
-                        <Checkbox label='Female'onClick={ this.handleFemaleCheckbox }/>
+                        <Checkbox label='Male' onClick={ this.props.handleMaleCheckbox }/>
+                        <Checkbox label='Female'onClick={ this.props.handleFemaleCheckbox }/>
                     </MenuItem>
                     <MenuItem>
                         <Dropdown placeholder='Ethnicitiy' fluid multiple selection options={this.ethicities} />
                     </MenuItem>
                     <MenuItem>
-                        <Dropdown text='Sort' icon='sort' floating labeled button className='icon'>
-                            <Dropdown.Menu>
-                                <Dropdown.Header icon='sort' content='Sort by' />
-                                <Dropdown.Item>A-Z</Dropdown.Item>
-                                <Dropdown.Item>Popularity</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown> 
+                        <select onChange={this.handlechange}>
+                            <option value="Popularity"> Popularity</option>
+                            <option value="A-Z"> A-Z</option>
+                        </select>
                     </MenuItem>          
                 </Menu>
-            </div>
+                </Segment>
+            </center>
         )
     }
 } 
