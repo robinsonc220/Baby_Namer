@@ -7,10 +7,11 @@ export default class NameList extends React.Component {
     render() {
 
         return (
-            <Grid relaxed columns={10}>
-                {this.props.renderNames()}
-            </Grid>
-        
+            <center>
+                <Grid relaxed columns={10}>
+                    {this.props.renderNames()}
+                </Grid>
+            </center>
 
         )
     }

@@ -1,12 +1,13 @@
 import React from 'react';
 
-import {Switch, Route, withRouter} from 'react-router';
-import {BrowserRouter as Router, Link} from 'react-router-dom';
+import { Route, withRouter} from 'react-router';
+import {BrowserRouter as Router} from 'react-router-dom';
 import NavBar from './NavBar';
 import Form from './Form'
 // import Header from './Header';
 import NameContainer from './NameContainer';
 import './App.css';
+import Favorites from './Favorites';
 
 
 class App extends React.Component {
@@ -122,12 +123,14 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <NavBar/>
+          <NavBar user={this.state.user}/>
         
           {/* <Header/> */}
-            <Route path="/register" render={ this.renderForm } />
-            <Route path="/login" render={ this.renderForm } />
+            <Route path="/register" exact render={ this.renderForm } />
+            <Route path="/login" exact render={ this.renderForm } />
+            <Route path="/favorites" exact render={(props) => <Favorites {...props}/>} />
             <Route path="/" exact render={this.renderNameContainer} />
+            
         
         </div>
       </Router>

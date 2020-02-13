@@ -6,7 +6,7 @@ export default class Favorites extends React.Component{
 
         return(
 
-            <h3>Favorites Go Here</h3>
+        <h3>Welcome ${this.props.user}!</h3>
         )
     }
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Image, Button, Modal, Icon} from 'semantic-ui-react'
-import Favorites from './Favorites'
 
 export default class Name extends React.Component {
     
@@ -22,7 +21,6 @@ export default class Name extends React.Component {
     render() {
     
     const { open, dimmer } = this.state
-    console.log(this.props.user)
 
         return (
 
