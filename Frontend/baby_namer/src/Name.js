@@ -22,6 +22,7 @@ export default class Name extends React.Component {
     
     const { open, dimmer } = this.state
 
+
         return (
 
             <div>

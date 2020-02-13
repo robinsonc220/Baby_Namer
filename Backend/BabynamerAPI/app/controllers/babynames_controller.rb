@@ -22,13 +22,17 @@ class BabynamesController < ApplicationController
         render json: search_result
     end
 
-    def search_by
-        # byebug
+    def search_by_gender
         gender=params[:gender].upcase
+        limit=params[:limit].to_i
+        search_result=Babyname.search_by_gender(gender,limit)
+        render json: search_result
+    end
+
+    def search_by_ethnicity
         ethnicity=params[:ethnicity].upcase
         limit=params[:limit].to_i
-        # Babyname.search_by(params[:gender],params[:ethnicity],params[:limit].to_i)
-        search_result=Babyname.search_by(gender,ethnicity,limit)
+        search_result=Babyname.search_by_ethnicity(ethnicity,limit)
         render json: search_result
     end
 
