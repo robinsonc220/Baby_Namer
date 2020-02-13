@@ -1,12 +1,72 @@
 import React from 'react'
+import {Bar,Line,Pie,Radar} from 'react-chartjs-2';
+import Chart from './Chart'
 
 export default class Favorites extends React.Component{
 
-    render(){
+    state={
+        favorites:[],
+        favorites_obj:{}
+    }
+    componentDidMount(){
+        fetch('http://localhost:3000/users/2')
+        .then(res=>res.json())
+        .then(pojos=>{
+            let favorites_names=pojos.favorites.map(element=>element.baby_name)
+            let favorites_names_objects={}
+            favorites_names.map(element=> 
+                {
+                    fetch(`http://localhost:3000/babynames/search/${element}`)
+                    .then(res=>res.json())
+                    .then(pojos=>{
+                        favorites_names_objects[element]=pojos
+                        this.setState({
+                            favorites_obj:favorites_names_objects
+                        }
+                        // ,()=>console.log(this.state.favorites_obj)
+                        )
+                        
+                    })
 
-        return(
-
-            <h3>Favorites</h3>
+                }
+            
+                )
+            
+        }
         )
+
+        
+    }
+
+
+
+    render(){
+        // console.log(Object.keys(this.state.favorites_obj))
+        let objectKeys=Object.keys(this.state.favorites_obj)
+        // let objectCounts={}
+        let mappedEthnicities=objectKeys.map(element1=> this.state.favorites_obj[element1].map(element=>element.ethnicity))
+        let mappedCounts=objectKeys.map(element1=> this.state.favorites_obj[element1].map(element=>element.count))
+        // let datasetsArray=[]
+
+        // console.log(mappedEthnicities)
+        // console.log(mappedCounts)     
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+        }
+        let randomInt=getRandomInt(0,objectKeys.length)
+        // console.log(randomInt)
+
+
+        let favorites_data={labels:mappedEthnicities[randomInt],datasets:[{label:`stats for ${objectKeys[randomInt]} name`,data:mappedCounts[randomInt],backgroundColor:'rgba(255, 159, 64, 0.6)'}]}
+
+        return (
+            <div>
+                <h3>Favorites</h3>
+                <Chart chartData={favorites_data} legendPosition="top"/>
+            </div>
+        );
+
     }
 }

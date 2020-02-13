@@ -23,7 +23,7 @@ const NavBar = () => {
               <NavLink to="/register">Register</NavLink>
             </MenuItem>
             <MenuItem>
-              <NavLink to="/names">Names</NavLink>
+              <NavLink to="/favorites">Names</NavLink>
             </MenuItem>
           </Menu.Menu>
         </Menu>

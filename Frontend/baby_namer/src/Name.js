@@ -22,7 +22,7 @@ export default class Name extends React.Component {
     render() {
     
     const { open, dimmer } = this.state
-    console.log(this.props.user)
+    // console.log(this.props.user)
 
         return (
 

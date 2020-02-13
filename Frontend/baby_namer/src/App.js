@@ -3,7 +3,8 @@ import React from 'react';
 import {Switch, Route, withRouter} from 'react-router';
 import {BrowserRouter as Router, Link} from 'react-router-dom';
 import NavBar from './NavBar';
-import Form from './Form'
+import Form from './Form';
+import Favorites from './Favorites';
 // import Header from './Header';
 import NameContainer from './NameContainer';
 import './App.css';
@@ -14,7 +15,8 @@ class App extends React.Component {
   state = {
     allNames: [],
     sessionUser:null,
-    user:{}
+    user:{},
+    myFavorites:{}
   }
 
   componentDidMount() {
@@ -49,18 +51,18 @@ class App extends React.Component {
     })
   }
 
-  handleSearchByGenderEthnicity=(gender,ethnicity,limit) => {
-    fetch(`http://localhost:3000/babynames/search_by/${gender}/${ethnicity}/${limit}`)
-    .then(res=>res.json())
-    .then(pojos=>console.log(pojos))
-  }
+  // handleSearchByGenderEthnicity=(gender,ethnicity,limit) => {
+  //   fetch(`http://localhost:3000/babynames/search_by/${gender}/${ethnicity}/${limit}`)
+  //   .then(res=>res.json())
+  //   .then(pojos=>console.log(pojos))
+  // }
 
 
-  handleSearchByName=(name) => {
-    fetch(`http://localhost:3000/babynames/search/${name}`)
-    .then(res=>res.json())
-    .then(pojos=>console.log(pojos))
-  }
+  // handleSearchByName=(name) => {
+  //   fetch(`http://localhost:3000/babynames/search/${name}`)
+  //   .then(res=>res.json())
+  //   .then(pojos=>console.log(pojos))
+  // }
 
   handleRegisterSubmit = (userInfo) => {
       fetch("http://localhost:3000/users", {
@@ -86,6 +88,7 @@ class App extends React.Component {
       })
   }
 
+
   renderForm = (routerProps) => {
     if(routerProps.location.pathname === "/login"){
       return <Form formName="Login Form" handleSubmit={this.handleLoginSubmit}/>
@@ -107,8 +110,9 @@ class App extends React.Component {
       })
     })
     .then(res=>res.json())
-    .then(pojo=>console.log(pojo))
-
+    .then(pojo=>this.setState({
+      myFavorites:pojo
+    }))
   }
 
   renderNameContainer = (routerProps) => {
@@ -117,8 +121,8 @@ class App extends React.Component {
 
   render() {
 
-    console.log(this.state.user, "APP STATE")
-    console.log(this.props)
+    // console.log(this.state.user, "APP STATE")
+    // console.log(this.props)
     return (
       <Router>
         <div className="App">
@@ -127,6 +131,7 @@ class App extends React.Component {
           {/* <Header/> */}
             <Route path="/register" render={ this.renderForm } />
             <Route path="/login" render={ this.renderForm } />
+            <Route path="/favorites" render={routerProps => <Favorites {...routerProps} /> }/>
             <Route path="/" exact render={this.renderNameContainer} />
         
         </div>

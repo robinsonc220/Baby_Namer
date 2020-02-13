@@ -3,12 +3,13 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login'
   get '/babynames/sort_rank', to: 'babynames#sort_rank'
   get '/babynames/search/:id', to: 'babynames#search'
-  get '/babynames/search_by/:gender/:ethnicity/:limit', to: 'babynames#search_by'
+  get '/babynames/search_by_gender/:gender/:limit', to: 'babynames#search_by_gender'
+  get '/babynames/search_by_ethnicity/:ethnicity/:limit', to: 'babynames#search_by_ethnicity'
   
   resources :favorites, only:[:index,:create]
 
   # resources :favorites, only:[:index]
   resources :babynames, only:[:show,:index]
-  resources :users, only:[:show,:create]
+  resources :users, only:[:show,:create,:index]
 
 end
