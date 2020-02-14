@@ -6,10 +6,12 @@ export default class Favorites extends React.Component{
 
     state={
         favorites:[],
-        favorites_obj:{}
+        favorites_obj:{},
+        user:this.props.user
     }
     componentDidMount(){
-        fetch('http://localhost:3000/users/2')
+        // console.log(this.state.user.username)
+        fetch(`http://localhost:3000/users/${this.state.user.id}`)
         .then(res=>res.json())
         .then(pojos=>{
             let favorites_names=pojos.favorites.map(element=>element.baby_name)
