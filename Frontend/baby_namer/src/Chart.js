@@ -15,7 +15,7 @@ export default class Chart extends Component{
         legendPosition:'top'
     }
     render(){
-        console.log(this.props.chartData)
+        // console.log(this.props.chartData)
         
         return(
             <div className='chart'>

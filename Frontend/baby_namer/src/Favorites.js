@@ -11,6 +11,7 @@ export default class Favorites extends React.Component{
     }
     componentDidMount(){
         // console.log(this.state.user.username)
+        if(this.state.user){
         fetch(`http://localhost:3000/users/${this.state.user.id}`)
         .then(res=>res.json())
         .then(pojos=>{
@@ -36,6 +37,7 @@ export default class Favorites extends React.Component{
             
         }
         )
+    }
 
         
     }
@@ -57,16 +59,18 @@ export default class Favorites extends React.Component{
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
         }
-        let randomInt=getRandomInt(0,objectKeys.length)
+        // let randomInt=getRandomInt(0,objectKeys.length)
         // console.log(randomInt)
-
-
-        let favorites_data={labels:mappedEthnicities[randomInt],datasets:[{label:`stats for ${objectKeys[randomInt]} name`,data:mappedCounts[randomInt],backgroundColor:'rgba(255, 159, 64, 0.6)'}]}
+        let newArray=Array.from(Array(objectKeys.length).keys())
+        let arrayOfComponents=newArray.map(element=><Chart chartData={{labels:mappedEthnicities[element],datasets:[{label:`stats for ${objectKeys[element]} name`,data:mappedCounts[element],backgroundColor:'rgba(255, 159, 64, 0.6)'}]}} legendPosition="top"/>)
+        
+        // let favorites_data={labels:mappedEthnicities[randomInt],datasets:[{label:`stats for ${objectKeys[randomInt]} name`,data:mappedCounts[randomInt],backgroundColor:'rgba(255, 159, 64, 0.6)'}]}
 
         return (
             <div>
                 <h3>Favorites</h3>
-                <Chart chartData={favorites_data} legendPosition="top"/>
+                {arrayOfComponents}
+                {/* <Chart chartData={favorites_data} legendPosition="top"/> */}
             </div>
         );
 
