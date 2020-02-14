@@ -4,7 +4,7 @@ import { Route, withRouter} from 'react-router';
 import {BrowserRouter as Router} from 'react-router-dom';
 import NavBar from './NavBar';
 import Form from './Form';
-import Favorites from './Favorites';
+// import Favorites from './Favorites';
 // import Header from './Header';
 import NameContainer from './NameContainer';
 import './App.css';
@@ -133,7 +133,7 @@ class App extends React.Component {
 
             <Route path="/register" exact render={ this.renderForm } />
             <Route path="/login" exact render={ this.renderForm } />
-            <Route path="/favorites" exact render={(props) => <Favorites {...props}/>} />
+            <Route path="/favorites" exact render={(props) => <Favorites {...props} user={this.state.user}/>} />
             <Route path="/" exact render={this.renderNameContainer} />
             
         
